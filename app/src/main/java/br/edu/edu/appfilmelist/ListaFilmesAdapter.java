@@ -1,13 +1,16 @@
 package br.edu.edu.appfilmelist;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.net.URI;
 import java.util.List;
 
 import br.edu.edu.appfilmelist.data.model.Filme;
@@ -31,6 +34,8 @@ public class ListaFilmesAdapter extends RecyclerView.Adapter<ListaFilmesAdapter.
     @Override
     public void onBindViewHolder(@NonNull ListaFilmesViewHolder holder, int position) {
         holder.textTituloFilme.setText(filmes.get(position).getNome());
+        Uri parse=Uri.parse(filmes.get(position).getCapa());
+        holder.imgcapafilme.setImageURI(parse);
 
     }
 
@@ -43,15 +48,17 @@ public class ListaFilmesAdapter extends RecyclerView.Adapter<ListaFilmesAdapter.
     static class ListaFilmesViewHolder extends RecyclerView.ViewHolder{
 
         private TextView textTituloFilme;
+        private ImageView imgcapafilme;
 
         public ListaFilmesViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textTituloFilme = itemView.findViewById(R.id.text_titulo_filme);
-
-
+            imgcapafilme = itemView.findViewById(R.id.imgcapafilme);
         }
     }
+
+
 
 
 }
